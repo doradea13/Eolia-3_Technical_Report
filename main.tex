@@ -1,0 +1,384 @@
+\documentclass[12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage[table, dvipsnames]{xcolor}
+\usepackage[hidelinks]{hyperref}
+\decimalpoint
+
+\usepackage[heuristica,vvarbb,bigdelims]{newtxmath}
+\usepackage[T1]{fontenc}
+\renewcommand*\oldstylenums[1]{\textosf{#1}}
+
+
+\usepackage{csquotes} %Authors and Quotes
+\usepackage{authblk}
+
+
+\usepackage{array} %Tabulars and arrays
+\usepackage{tabularray}
+\usepackage{multirow}
+\usepackage{multicol}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{extarrows}
+
+
+\usepackage[letterpaper,top=2cm,bottom=2.1cm,left=2cm,right=2cm,marginparwidth=1.75cm]{geometry}
+
+
+\usepackage{physics} %Math and symbols and more of that
+\usepackage{textcomp, gensymb}
+\usepackage{amsmath}
+\usepackage{amsbsy}
+\usepackage{upgreek}
+\usepackage{mathtools}
+\usepackage{wasysym}
+
+
+\usepackage{comment} %Styles and more
+\usepackage{cancel}
+\usepackage{enumerate}
+\usepackage[framemethod=default]{mdframed} 
+\usepackage{tikz}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage{mathdots}
+\usepackage{color}
+\usepackage{blindtext}
+\usepackage{pageslts}
+\usepackage{enumitem}
+\usepackage{anyfontsize}
+\usepackage{boldline}
+\usepackage{siunitx}
+\usepackage[explicit]{titlesec}
+
+
+\usepackage{lipsum} %Miscellaneous
+\usepackage{float}
+
+%Bibliography data management
+\usepackage{biblatex} %Imports biblatex package
+% \addbibresource{citation.bib} %Import the bibliography file
+
+
+\pagenumbering{arabic}
+
+\setlength{\parindent}{0pt}
+
+\usetikzlibrary{patterns}
+\usetikzlibrary{shadows.blur}
+\usetikzlibrary{shapes}
+
+\DeclareMathOperator\arccosh{arccosh}
+
+%Page styles and more ##########################
+
+\mdfdefinestyle{questions}{
+linecolor=BrickRed,
+linewidth=2pt,
+leftmargin=1cm,
+rightmargin=1cm
+}
+
+\mdfdefinestyle{solutions}{
+backgroundcolor = Cyan!10,
+linecolor=Purple,
+linewidth=2pt,
+}
+
+\mdfdefinestyle{draw}{
+linecolor=Black,
+linewidth=1.5pt,
+}
+
+\mdfdefinestyle{equation}{
+    backgroundcolor = black!6,
+    linecolor=blue,
+    linewidth=1.5pt,
+    topline=false,
+    rightline=false,    
+    leftline = false,
+}
+
+\mdfdefinestyle{membret}{
+    linecolor = blue,
+    linewidth = 1.5pt,
+    topline = false,
+    rightline = false,    
+    leftline = false,
+}
+
+%KeyWords-Command ##############################
+\titleformat{\section}
+  {\normalfont\Large\bfseries} % Text style
+  {}                           % Label (handled in the next argument)
+  {0pt}                        % Separation
+  {%
+    \makebox[0pt][l]{\color{blue}\rule[-4pt]{4pt}{1.2em}} % The Vertical Bar
+    \hspace{10pt}\thesection\quad#1                      % The Title
+  }
+
+% Format for Subsection
+\titleformat{\subsection}{\normalfont\large\bfseries}
+  {}
+  {0pt}
+  {%
+    \makebox[0pt][l]{\color{black}\rule[-2pt]{3pt}{1em}} % Thinner bar for subsection
+    \hspace{10pt}\thesubsection\quad#1
+}
+
+
+%KeyWords-Command ##############################
+
+\def\arraystretch{1.2}
+\def\QWidth{2.5pt}
+
+\newenvironment{question}[2]
+    {
+    {\global\arrayrulewidth = \QWidth}
+    \def\arraystretch{1.5}
+    \def\points{#2} %Save the points in a variable to use later
+    
+    \begin{center}
+    \begin{tabular}{
+    !{\color{red} \vrule width \QWidth} m{\linewidth*\real{0.05}} !{\color{red} \vrule width \QWidth} m{\linewidth*\real{0.75}} !{\color{red} \vrule width \QWidth} m{\linewidth*\real{0.1}} !{\color{red} \vrule width \QWidth}}  % Begin center and table 
+    
+    \arrayrulecolor{red}\hline 
+    
+    \centering{\bf #1}
+    & 
+    %\vspace{2mm}\begin{minipage}{\linewidth}
+    
+    }{
+        %\end{minipage} \vspace{-1.5mm}
+        &
+        {\bf +\points pts.}
+        \\ \arrayrulecolor{red}\hline
+        
+        \end{tabular}
+        \end{center}
+        {\global\arrayrulewidth = 1pt}
+    }
+
+
+\makeatletter
+\renewcommand\maketitle{
+    {\centering
+    \phantom{Hello there} \\
+    \vspace{5cm}
+    \@title \\
+    \large
+    \vspace{10mm}
+    Miguel Doradea Meléndez \\
+    Samuel Martín Arteaga \\
+    \vspace{3mm}
+    Universidad Politécnica de Valencia
+   
+    \clearpage}
+}
+
+
+\makeatother
+
+\fancypagestyle{format1}{
+    \renewcommand{\headrulewidth}{0pt}
+    \renewcommand{\footrule}{ {\color{blue} \rule{\linewidth}{1.5pt}}}
+    
+    \fancyhead{}
+    \fancyfoot{}
+    
+    \fancyhf[FC]{\hspace{7mm} GIE: EDSO \hfill Página: \thepage \ de \lastpageref{LastPages}}
+}
+
+%Format and title#######################
+
+\pagestyle{format1}
+\title{{\fontsize{32}{32}\selectfont \bf Grado de Ingeniería de la Energía} \\ \vspace{3mm}
+    {\LARGE \color{Blue} \textbf{Energías de Desarrollo Sostenible:} Práctica 2, Diseño de un parque eólico y estimación de su viabilidad económica con el programa RETScreen.}}
+
+%Begin Document####################### 
+\begin{document}
+\maketitle
+
+\section{Objetivos}
+
+El objetivo principal de la presente práctica es diseñar de manera simplificada un parque eólico. Para ello se dividirá la práctica en dos partes:
+
+\begin{itemize}[label = \textbullet]
+    \item Estudio de la metodología de diseño de un parque eólico
+    \item Estudiar la viabilidad económica
+\end{itemize}
+
+\section{Metodología de Diseño de un Parque Eólico}
+
+Para localizar una buena ubicación del parque debemos buscar una colina que sea capaz de albergar la cantidad deseada de aerogeneradores. Se desea instalar un parque de $6 \unit{MW}$, por lo que se necesitan \textbf{3 aerogeneradores de 2 MW}. Vamos a suponer que utilizamos aerogeneradores \textbf{G83-2MW} de Gamesa. En el catálogo podemos ver que la longitud de pala es de $40.5 \unit{m}$, lo que equivale a $83 \unit{m}$ de diámetro de rotor y una potencia de $2 \unit{MW}$. \medskip
+
+La información técnica del aerogenerador escogido (\textbf{G83-2MW}) nos da la curva de Potencia del Aerogenerador:
+
+\begin{table}[htbp]
+    \centering
+    \small
+    % Left Minipage
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \begin{tblr}{
+            colspec = {c c},
+            hlines = {0.5pt, solid, gray!50}, 
+            vlines = {0.5pt, solid, gray!50},
+            row{1,2} = {bg=blue!20, font=\bfseries}, 
+            hline{3} = {1.5pt, solid, black},        
+        }
+        Velocidad del viento & Curva de potencia \\
+        v(m/s)               & P(kW)             \\
+        0                    & 0                 \\
+        1                    & 0                 \\
+        2                    & 0                 \\
+        3                    & 0                 \\
+        4                    & 65.1              \\
+        5                    & 152               \\
+        6                    & 285               \\
+        7                    & 471               \\
+        8                    & 716               \\
+        9                    & 1025              \\
+        10                   & 1377              \\
+        11                   & 1691              \\
+        12                   & 1882              \\
+        \end{tblr}
+    \end{minipage}\hfill % \hfill pushes the two minipages apart
+    % Right Minipage
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \begin{tblr}{
+            colspec = {c c},
+            hlines = {0.5pt, solid, gray!50}, 
+            vlines = {0.5pt, solid, gray!50},
+            row{1,2} = {bg=blue!20, font=\bfseries}, 
+            hline{3} = {1.5pt, solid, black},        
+        }
+        Velocidad del viento & Curva de potencia \\
+        v(m/s)               & P(kW)             \\
+        13                   & 1964              \\
+        14                   & 1990              \\
+        15                   & 1998              \\
+        16                   & 1999              \\
+        17                   & 2000              \\
+        18                   & 2000              \\
+        19                   & 2000              \\
+        20                   & 2000              \\
+        21                   & 2000              \\
+        22                   & 2000              \\
+        23                   & 2000              \\
+        24                   & 2000              \\
+        25                   & 2000              \\
+        \end{tblr}
+    \end{minipage}
+    \caption{Información técnica del aerogenerador G83-2MW de la marca Gamesa.}
+    \label{tab:1}
+\end{table}
+
+La curva de potencia nos da la potencia que el aerogenerador es capaz de generar a cada velocidad del viento. Se puede observar que a partir de los $12 \unit{m/s}$ el aerogenerador alcanza su potencia nominal de $2 \unit{MW}$, por lo que no es capaz de generar más energía a velocidades del viento superiores a esta. En la siguiente gráfica podemos observar este comportamiento: \medskip
+
+
+
+\subsection{Pasos a seguir para el planteamiento del parque eólico}
+
+\begin{enumerate}[label = \textbf{Paso \arabic*:}, leftmargin = 2.5cm, labelindent = 2.5cm]
+    \item Información necesaria para seleccionar una buena ubicación de un parque eólico.
+    \item Herramientas necesarias.
+    \item Elegir una zona eólica.
+    \item Búsqueda de una colina.
+    \item Caracterización eólica de la zona.
+    \item Cálculo de la energía bruta y neta
+\end{enumerate}
+
+\subsection{Requisitos}
+
+\subsubsection{Administrativos}
+
+Plan Eólico de la Comunitat Valenciana.
+Se debe comprobar que el parque eólico no incumpla las condiciones
+mínimas estipuladas por el Plan Eólico de la Comunidad Valenciana (DOGV,
+2001) y por el PER (IDAE, 2011):
+
+\begin{itemize}[label = \textbullet]
+    \item  Distancia mínima a suelo urbano o urbanizable de uso no industrial (Plan Eólico): 1000 m.
+    \item  Distancia mínima a una línea de la red eléctrica de alta tensión (PER): 250 m.
+    \item  Distancia mínima a carreteras autonómicas (PER): 100 m.
+    \item  Distancia mínima a carreteras nacionales, autovía y/o autopista (PER): 200 m.
+    \item  Para consultar el plan urbanístico del suelo se emplea la aplicación Terrasit (IDECV, 2017).
+\end{itemize}
+
+\subsubsection{Técnicos}
+\begin{itemize}
+    \item Orografía. Cimas largas y poco escarpadas.
+    \item Dirección predominante del viento. Interesa que sea lo más perpendicular posible a la colina para que los aerogeneradores no se hagan sombra aerodinámica.
+    \item Velocidad media del viento elevada.
+    \item Distribución de frecuencias del viento. Weibull (C, K).
+    \item Cumplir con distancias a poblaciones, carreteras, líneas transporte eléctrico (Relacionado con Requisitos Administrativos).
+\end{itemize}
+
+
+
+\section{Cálculo de la energía bruta y neta}
+
+Para calcular la energía bruta y neta se va a utilizar una plantilla \textbf{Excel de PoliformaT (Cálculo energía.xlsx)}. \medskip
+
+Antes de hacer uso de la Excel hay que entender la importancia del valor de la densidad para el cálculo de la Potencia del Aerogenerador
+
+\[ P_{extraible} = \frac{1}{2} \rho \cdot A \cdot v_1^3 \cdot C_p \]
+
+Hay que tener en cuenta el cambio de presión atmosférica a nivel del mar y a la altitud considerada:
+
+\begin{itemize}
+    \item La densidad de aire a $25\celsius$ y nivel del mar es $1.225 \unit{kg/m^3}$
+    \item Entre 900 y 1100 metros de altitud (incluido el buje) y a temperaturas entre $10\celsius$ y $15 \celsius$, la densidad del aire está entorno a $1.135 \unit{kg/m^3}$
+\end{itemize}
+
+Queda por calcular el número de horas equivalentes de un parque eólico. Esto es el cociente de la producción anual de energía (PAE) y su potencia nominal.
+
+\begin{equation}
+    NHE = \frac{PAE}{P_{nom}}
+\end{equation}
+
+El \textbf{factor de carga} es el cociente entre el NHE de un año y el número de horas de un año.
+
+\begin{equation}
+    CF = \frac{NHE}{8760 \unit{h}}
+\end{equation}
+
+A partir de un factor de carga del 30\% se considera que el PE tiene posibilidades de ser rentable técnicamente. \medskip
+
+Utilizando la hoja de cálculo de excel conseguimos la siguiente información (la hoja de excel está anexada con este documento):
+
+
+\begin{table}[h!]
+    \centering
+    \renewcommand{\arraystretch}{1.3}
+    \begin{tblr}{
+        colspec = {c c c c c c c},
+        row{1-2} = {c, font=\bfseries, bg=blue!20},
+        hline{3} = {2pt, solid},
+    }
+        \textbf{Dir.} & \textbf{Sector} & \textbf{C} & \textbf{K} & \textbf{freq} & \textbf{Suma Parcial} & \textbf{Energía Bruta} \\ 
+        & & \scriptsize linea-10 & \scriptsize linea-11 & \scriptsize linea-5/10000 & & \scriptsize (kWh/sector) \\
+        N   & 1  & 7.44  & 1.289 & 4.06\%  & 4999025.08 & \textbf{202960.42} \\
+        NNE & 2  & 2.93  & 0.909 & 2.23\%  & 1380568.17 & \textbf{30786.67} \\
+        ENE & 3  & 6.38  & 1.314 & 5.36\%  & 4002826.38 & \textbf{214551.49} \\
+        E   & 4  & 6.24  & 1.783 & 12.16\% & 3356322.41 & \textbf{408128.81} \\
+        ESE & 5  & 4.72  & 1.786 & 10.61\% & 1598320.26 & \textbf{169581.78} \\
+        SSE & 6  & 3.64  & 1.867 & 6.55\%  & 632223.27  & \textbf{41410.62} \\
+        S   & 7  & 3.21  & 1.687 & 4.42\%  & 476872.44  & \textbf{21077.76} \\
+        SSO & 8  & 3.15  & 0.952 & 3.53\%  & 1473506.14 & \textbf{52014.77} \\
+        OSO & 9  & 7.70  & 1.169 & 7.86\%  & 5137085.32 & \textbf{403774.91} \\
+        O   & 10 & 11.05 & 1.700 & 21.60\% & 8207053.37 & \textbf{1772723.53} \\
+        ONO & 11 & 9.70  & 1.567 & 13.08\% & 7040036.04 & \textbf{920836.71} \\
+        NNO & 12 & 10.24 & 1.680 & 9.09\%  & 7610896.34 & \textbf{691830.48} \\
+    \end{tblr}
+    \caption{Cálculo de la energía bruta por sector de viento.}
+    \label{tab:2}
+\end{table}
+
+Hello There!
+
+\end{document}
